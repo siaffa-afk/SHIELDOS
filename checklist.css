@@ -1,0 +1,146 @@
+/* Guided checklist: one step open at a time. Completed steps collapse with a
+   green check; future steps stay muted; blocked steps are clear, not chaotic. */
+.checklist { margin-top: 4px; }
+
+.checklist-progress {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+.checklist-progress .track {
+  flex: 1;
+  height: 8px;
+  background: var(--gray-soft);
+}
+.checklist-progress .fill {
+  height: 100%;
+  background: var(--green);
+  transition: width 0.3s ease;
+}
+.checklist-progress .count { font-size: 0.85rem; color: var(--ink-2); }
+
+.step {
+  background: var(--card);
+  border: 1.5px solid var(--line);
+  margin-bottom: 10px;
+}
+
+.step-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  min-height: var(--tap);
+}
+
+.step-number {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--num);
+  font-weight: 700;
+  border: 1.5px solid var(--line);
+  color: var(--ink-3);
+  background: #fff;
+}
+
+.step-title { font-size: 1rem; flex: 1; }
+
+/* completed: collapsed, green check */
+.step.is-done { border-color: var(--green-soft); }
+.step.is-done .step-number {
+  background: var(--green);
+  border-color: var(--green);
+  color: #fff;
+}
+.step.is-done .step-title { color: var(--ink-2); font-weight: 600; }
+
+/* current: open, emphasized */
+.step.is-current { border-color: var(--navy); border-width: 2px; }
+.step.is-current .step-number {
+  background: var(--navy);
+  border-color: var(--navy);
+  color: #fff;
+}
+
+/* future: muted */
+.step.is-upcoming { opacity: 0.62; }
+
+/* blocked: clear but calm — amber, with a reason line */
+.step.is-blocked { border-color: var(--amber); border-width: 2px; }
+.step.is-blocked .step-number {
+  background: var(--amber-soft);
+  border-color: var(--amber);
+  color: var(--amber);
+}
+
+.step-body {
+  padding: 0 16px 16px 60px;
+}
+
+.step-instruction {
+  font-size: 0.95rem;
+  color: var(--ink-2);
+  margin: 0 0 12px;
+}
+
+.step-helper {
+  font-size: 0.84rem;
+  color: var(--ink-3);
+  margin: 10px 0 0;
+}
+
+.step-detail {
+  border-left: 3px solid var(--navy-soft);
+  padding: 6px 0 6px 12px;
+  margin-bottom: 12px;
+  font-size: 0.9rem;
+}
+
+.handoff-section {
+  border: 1.5px solid var(--line);
+  padding: 12px;
+  margin-bottom: 10px;
+}
+.handoff-section.is-confirmed { border-color: var(--green); background: var(--green-soft); }
+.handoff-section .autofill-tag {
+  font-size: 0.72rem;
+  color: var(--blue);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.review-line {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 0;
+  font-size: 0.95rem;
+}
+.review-line .mark { font-weight: 800; width: 22px; text-align: center; }
+.review-line.ok .mark { color: var(--green); }
+.review-line.bad .mark { color: var(--amber); }
+
+.completion-card {
+  text-align: center;
+  padding: 32px 20px;
+}
+.completion-card .big-check {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 14px;
+  background: var(--green);
+  color: #fff;
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 480px) {
+  .step-body { padding-left: 16px; }
+}

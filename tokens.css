@@ -1,0 +1,86 @@
+/* ShieldOS design tokens — ported from the validated prototypes.
+   Identity: flat, squared (radius 0), calm, high-contrast, Sora/Inter/Space
+   Grotesk. Color directs attention: green=complete/safe, amber=attention
+   soon, red=true blockers/safety only, blue=helpful action, gray=inactive. */
+:root {
+  /* structure */
+  --navy: #08243d;
+  --navy-2: #0e3355;
+  --navy-3: #123f66;
+  --navy-soft: #e7eef4;
+
+  /* semantic status */
+  --green: #0f7a46;
+  --green-2: #1fa862;
+  --green-soft: #e2f4ea;
+  --amber: #9a5b02;
+  --amber-soft: #fbeeda;
+  --red: #b3271e;
+  --red-soft: #fbe9e7;
+  --blue: #2166a8;
+  --blue-soft: #e9f1f9;
+  --gray: #6b7885;
+  --gray-soft: #eef0f3;
+
+  /* text + surfaces */
+  --ink: #10202c;
+  --ink-2: #41586a;
+  --ink-3: #5d7080;
+  --bg: #eef2f6;          /* warm off-white workspace */
+  --card: #ffffff;
+  --line: #dce4ec;
+
+  /* houses */
+  --house-blue: #2166a8;
+  --house-green: #0f7a46;
+  --house-purple: #5b3a80;
+
+  /* type */
+  --font: 'Inter', system-ui, sans-serif;
+  --head: 'Sora', var(--font);
+  --num: 'Space Grotesk', var(--font);
+
+  /* shape + rhythm */
+  --radius: 0;            /* squared, professional */
+  --shadow: none;         /* minimal shadows */
+  --gap: 14px;
+  --pad: 18px;
+  --tap: 48px;            /* minimum touch target */
+  --maxw: 720px;
+}
+
+* { box-sizing: border-box; }
+
+html { font-size: 16px; }
+
+body {
+  margin: 0;
+  font-family: var(--font);
+  color: var(--ink);
+  background: var(--bg);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 { font-family: var(--head); margin: 0; line-height: 1.25; }
+
+.num { font-family: var(--num); font-variant-numeric: tabular-nums; }
+
+/* visible focus for keyboard users — never removed */
+:focus-visible {
+  outline: 3px solid var(--blue);
+  outline-offset: 2px;
+}
+
+.sr-only {
+  position: absolute; width: 1px; height: 1px;
+  margin: -1px; padding: 0; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -1,0 +1,25 @@
+/* Mobile is the primary test target; desktop widens calmly. */
+@media (max-width: 640px) {
+  main.work-area { padding: 12px 12px 150px; }
+  .top-nav { padding: 8px 12px; }
+  .top-nav .context { font-size: 0.76rem; }
+  .card { padding: 14px; }
+  .btn { font-size: 1rem; }
+}
+
+@media (min-width: 900px) {
+  /* On desktop the bottom nav becomes a quieter footer bar. */
+  .bottom-nav { max-width: var(--maxw); margin: 0 auto; border: 1.5px solid var(--line); }
+  .fab-emergency { right: calc(50% - var(--maxw) / 2 + 14px); }
+  .fab-document { left: calc(50% - var(--maxw) / 2 + 14px); }
+}
+
+/* Large-text users: layout must not break at 200% zoom (WCAG 1.4.4). */
+@media (max-width: 380px) {
+  .top-nav .context .house-name { display: none; }
+  .bottom-nav button { font-size: 0.66rem; }
+}
+
+@media print {
+  .top-nav, .bottom-nav, .fab-emergency, .fab-document { display: none; }
+}
